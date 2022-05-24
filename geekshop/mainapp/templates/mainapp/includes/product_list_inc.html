@@ -1,0 +1,17 @@
+{% load static %}
+{% for product in products %}
+<div class = "block"> 
+<a href="{% url 'basket:add' product.id %}">
+    {% if product.image %}
+        <img class="product_image" src="{{ product.image.url }}" alt="">
+    {% else %}
+        <img class="product_image" src="{% static 'css/img/not_image.png' %}" alt="">
+    {% endif %}
+    <div class="text">
+        <img src="{% static '/css/img/icon-hover.png' %}" alt="img">
+        <h4>{{ product.name|title }}</h4>
+        <p>{{ product.description|upper|truncatewords:10 }}</p>
+    </div>
+</a>
+</div>
+{% endfor %}
