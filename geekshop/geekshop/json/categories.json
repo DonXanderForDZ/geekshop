@@ -1,10 +1,10 @@
 [
     {
-        "name": "Диваны",
-        "description": "Мягкие диваны"
+        "name": "Armchear",
+        "description": "Armchear"
     },
     {
-        "name": "Лампы",
-        "description": "Яркие лампы"
+        "name": "Lamp",
+        "description": "Lamp"
     }
 ]
