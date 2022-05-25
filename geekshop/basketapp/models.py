@@ -6,10 +6,10 @@ from django.conf import settings
 
 class BasketManager(models.Manager):
     def quantity(self):
-        return sum([item.quantity for item in self.all()])
+        return sum(item.quantity for item in self.all())
     
     def sum(self):
-        return sum([item.product.price * item.quantity for item in self.all()])
+        return sum(item.product.price * item.quantity for item in self.all())
 
 
 class Basket(models.Model):
@@ -18,7 +18,11 @@ class Basket(models.Model):
     quantity = models.PositiveSmallIntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     
-    objects: BasketManager()
+    objects = BasketManager()
+    
+    @property
+    def cost(self):
+        return self.quantity * self.product.price
     
     def __str__(self):
         return f'{self.product} - {self.quantity} шт'

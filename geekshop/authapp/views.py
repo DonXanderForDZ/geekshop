@@ -4,6 +4,7 @@ from django.http.response import HttpResponseRedirect
 from django.urls import reverse
 from authapp.forms import LoginForm, RegisterForm, UserEditForm
 from .models import ShopUser
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -20,7 +21,8 @@ def login(request):
             )
             if user:
                 auth.login(request, user=user)
-                return HttpResponseRedirect(reverse('index'))
+                redirect_url = request.GET.get('next', reverse('index'))
+                return HttpResponseRedirect(redirect_url)
             
     return render(request, 'authapp/login.html', context={
             'title': 'Вход в систему',
@@ -45,7 +47,7 @@ def register(request):
             'title': 'Регистрация',
             'form': form
         })
-    
+@login_required    
 def edit(request):
     form = UserEditForm(instance=request.user)
     
