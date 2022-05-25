@@ -47,6 +47,7 @@ def register(request):
             'title': 'Регистрация',
             'form': form
         })
+    
 @login_required    
 def edit(request):
     form = UserEditForm(instance=request.user)

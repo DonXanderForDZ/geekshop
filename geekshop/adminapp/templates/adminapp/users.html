@@ -1,0 +1,18 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+{% block content %}
+<a href="{% url 'admin:create_user' %}" class="pure-button pure-button-primary">Создать пользователя</a>
+<div class="users_list">
+    {% for user in users %}
+    <div class="basket_record">
+        <span>{{ user.username }}</span>
+        <span>{{ user.city }}</span>
+        {% if user.image %}
+        <img class="user-image" src="{{ user.image.url }}" alt="{{ user.username }}">
+        {% endif %}
+        <a href="{% url 'admin:update_user' user.pk %}" class="pure-button pure-button-primary">Редактировать</a>
+        <a href="{% url 'admin:delete_user' user.pk %}" class="pure-button pure-button-primary">Удалить</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

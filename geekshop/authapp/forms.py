@@ -20,6 +20,11 @@ class UserEditForm(UserChangeForm):
  #   def clean_city():
  #       pass
     
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            if field_name == "password":
+                field.widget = forms.HiddenInput()
                  
     def clean_age(self):
         data = self.cleaned_data['age']

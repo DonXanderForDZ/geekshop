@@ -1,0 +1,16 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+{% block content %}
+<a href="{% url 'admin:create_category' %}" class="pure-button pure-button-primary">Создать категорию</a>
+<div class="users_list">
+    {% for category in categories %}
+        <div>
+            <span>{{ category.name }}</span>
+            <span>{{ category.description }}</span>
+            <a href="{% url 'admin:products' category.pk %}" class="pure-button pure-button-primary">К товарам категории</a>
+            <a href="{% url 'admin:update_category' category.pk %}" class="pure-button pure-button-primary">Редактировать</a>
+            <a href="{% url 'admin:delete_category' category.pk %}" class="pure-button pure-button-primary">Удалить</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

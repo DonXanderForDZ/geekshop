@@ -9,6 +9,7 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=25, unique=True)
     description = models.CharField(max_length=140)
+    is_active = models.BooleanField(default=True)
 
 
 def __str__(self):
@@ -22,6 +23,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='product_images', blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     quatity = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
 
 
 def __str__(self):
