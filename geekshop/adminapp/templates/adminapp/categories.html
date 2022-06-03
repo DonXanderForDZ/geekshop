@@ -3,7 +3,7 @@
 {% block content %}
 <a href="{% url 'admin:create_category' %}" class="pure-button pure-button-primary">Создать категорию</a>
 <div class="users_list">
-    {% for category in categories %}
+    {% for category in object_list %}
         <div>
             <span>{{ category.name }}</span>
             <span>{{ category.description }}</span>

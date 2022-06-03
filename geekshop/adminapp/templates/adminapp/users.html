@@ -3,7 +3,7 @@
 {% block content %}
 <a href="{% url 'admin:create_user' %}" class="pure-button pure-button-primary">Создать пользователя</a>
 <div class="users_list">
-    {% for user in users %}
+    {% for user in object_list %}
     <div class="basket_record">
         <span>{{ user.username }}</span>
         <span>{{ user.city }}</span>
