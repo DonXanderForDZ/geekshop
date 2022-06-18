@@ -1,6 +1,7 @@
 {% extends 'adminapp/base.html' %}
 {% load static %}
 {% block content %}
+<a href="{% url 'admin:create_product' category.pk %}" class="pure-button pure-button-primary">Создать продукт</a>
 <div>
     {% for product in products %}
         <div>

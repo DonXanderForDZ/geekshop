@@ -27,6 +27,8 @@ urlpatterns = [
     path("basket/", include("basketapp.urls", namespace="basket")),
     path("category/<int:pk>/", mainapp.category, name="category"),
     path("product/<int:pk>/", mainapp.product, name="product"),
+    path("products/<int:pk>/", mainapp.category, name="category"),
+    path("products/<int:pk>/<int:page>/", mainapp.category, name="category"),
 ]
 
 if settings.DEBUG:
